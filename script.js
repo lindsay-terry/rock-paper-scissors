@@ -12,20 +12,21 @@ const startGame = function() {
             scissors: 0,
         }
     }
-
-const computerOptions = ["R", "P", "S"];
+//Array of options for computer to pick from
+let computerOptions = ["R", "P", "S"];
 
 let keepPlaying = true;
-
+//loop until user chooses to stop
+//ask user to choose
 while (keepPlaying) {
     let userOptions = window.prompt("Enter R, P, or S:");
 
-    computerOptions
 
+//if user presses cancel, immediately end function
     if (!userOptions) {
         return;
     }
-
+//check that user has made a valid choice
     if (!computerOptions.includes(userOptions)) {
         window.alert("Please make a valid choice");
     } else {
@@ -37,8 +38,25 @@ while (keepPlaying) {
             stats.count.scissors++;
         }
     }
+//get random index from array of options
+    alert(computerOptions[Math.floor(Math.random() * computerOptions.length)]);
 
-    computerOptions[Math.floor(Math.random() * computerOptions.length)]
+    if (userOptions && computerOptions) {
+        window.alert("It's a tie!");
+        stats.count.ties++;
+    } else if (userOptions === "R" && computerOptions === "S") {
+        window.alert("You win!");
+        stats.count.wins++;
+    } else if (userOptions === "P" && computerOptions === "R") {
+        window.alert("You win!");
+        stats.count.wins++;
+    } else if (userOptions === "S" && computerOptions === "P") {
+        window.alert("You win!");
+        stats.count.wins++;
+    } else {
+        window.alert("You lose!");
+        stats.count.losses++;
+    }
 
     if (!confirm("Do you want to keep playing?")) {
         keepPlaying = false;
@@ -51,18 +69,18 @@ userOptions = userOptions.toUpperCase();
 
 }
 
-//Array of options for computer to pick from
 
 
-//loop until user chooses to stop
 
-//ask user to choose
 
-//if user presses cancel, immediately end function
 
-//check that user has made a valid choice
 
-//get random index from array of options
+
+
+
+
+
+
 
 //if choises are the same, it's a tie
 
