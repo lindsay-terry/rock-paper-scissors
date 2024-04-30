@@ -1,5 +1,5 @@
 const startGameBtn = document.querySelector("#start-game");
-
+const statsArray =[];
 const startGame = function() {
     //create object to store stats
     const stats = {
@@ -20,6 +20,7 @@ let keepPlaying = true;
 //ask user to choose
 while (keepPlaying) {
     let userOptions = window.prompt("Enter R, P, or S:");
+    userOptions = userOptions.toUpperCase();
 
 
 //if user presses cancel, immediately end function
@@ -31,69 +32,67 @@ while (keepPlaying) {
         window.alert("Please make a valid choice");
     } else {
         if (userOptions === "R") {
-            stats.count.rock++;
+            stats.totalChoices.rock++;
         } else if (userOptions === "P") {
-            stats.count.paper++;
+            stats.totalChoices.paper++;
         } else if (userOptions === "s") {
-            stats.count.scissors++;
+            stats.totalChoices.scissors++;
         }
+        
+        
     }
-//get random index from array of options
-    alert(computerOptions[Math.floor(Math.random() * computerOptions.length)]);
+        
 
-    if (userOptions && computerOptions) {
+//get random index from array of options
+    const random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+    window.alert(`The computer chose ${random}.`)
+
+    if (userOptions === random) {
         window.alert("It's a tie!");
-        stats.count.ties++;
-    } else if (userOptions === "R" && computerOptions === "S") {
+        stats.totalChoices.ties++;
+    } else if (userOptions === "R" && random === "S") {
         window.alert("You win!");
-        stats.count.wins++;
-    } else if (userOptions === "P" && computerOptions === "R") {
+        stats.totalChoices.wins++;
+    } else if (userOptions === "P" && random === "R") {
         window.alert("You win!");
-        stats.count.wins++;
-    } else if (userOptions === "S" && computerOptions === "P") {
+        stats.totalChoices.wins++;
+    } else if (userOptions === "S" && random === "P") {
         window.alert("You win!");
-        stats.count.wins++;
+        stats.totalChoices.wins++;
     } else {
         window.alert("You lose!");
-        stats.count.losses++;
+        stats.totalChoices.losses++;
     }
 
     if (!confirm("Do you want to keep playing?")) {
         keepPlaying = false;
     }
+
+    statsArray.push(stats);
+}
+    return statsArray;
 }
 
-userOptions = userOptions.toUpperCase();
+const displayResults = function(statsArray) {
+    const statsTable = document.querySelector('#stats-table');
+    statsTable.innerHTML = '';
 
+    for (let i = 0; i < statsArray.length; i++) {
+        const currentStats = statsArray[i];
+        const newTableRow = document.createElement("tr");
 
+        const winsCell = document.createElement("td");
+        winsCell.textContent = currentStats.stats.wins;
+        newTableRow.append(winsCell);
 
+        const lossesCell = document.createElement("td");
+        lossesCell.textContent = currentStats.stats.losses;
+        newTableRow.append(lossesCell);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if choises are the same, it's a tie
-
-//check every win condition for the player
-
-//if above conditions failed, assume player lost
-
-//ask user to play again
-
-//print stats with line breaks
 
 
 //run the game
 startGameBtn.addEventListener('click', startGame);
-startGame();
-
+// startGame();
+displayResults();
