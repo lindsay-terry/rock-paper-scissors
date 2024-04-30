@@ -1,0 +1,21 @@
+:root {
+    --gray: rgb(170, 165, 165);
+    --maroon: rgb(93, 3, 3);
+}
+
+body {
+    font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
+    background-color: var(--maroon);
+    font-size: 16px;
+    color: var(--gray);
+    text-align: center;
+}
+
+button {
+    font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
+    font-size: 115%;
+    background-color: var(--gray);
+    font-weight: bold;
+    border: solid 1px black;
+    
+}
