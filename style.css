@@ -1,26 +1,36 @@
 :root {
     --gray: rgb(170, 165, 165);
-    --maroon: rgb(93, 3, 3);
+    --maroon: rgb(60, 3, 3);
+    --lightmode: rgb(253, 110, 110);
+    --lightmode-text: rgb(7, 7, 80);
 }
 
 body {
     font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
-    background-color: var(--maroon);
     font-size: 16px;
-    color: var(--gray);
     text-align: center;
 }
 
-button {
+.dark {
+    background-color: var(--maroon);
+    color: var(--gray);
+}
+
+.light {
+    background-color: var(--lightmode);
+    color: var(--lightmode-text);
+}
+
+main button,
+section button {
     font-family: "Copperplate", "Copperplate Gothic Light", fantasy;
     font-size: 115%;
     background-color: var(--gray);
     font-weight: bold;
-    border: solid 1px black;
-    
+    border: solid 1px black;   
 }
 
-table {
+/* table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
@@ -33,4 +43,16 @@ td {
 
 tbody tr:nth-child(even) {
     background-color: var(--gray);
+} */
+main {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100vh;
+
+}
+
+main button {
+    height: 20px;
+
 }

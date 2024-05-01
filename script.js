@@ -73,26 +73,40 @@ while (keepPlaying) {
     return statsArray;
 }
 
-const displayResults = function(statsArray) {
-    const statsTable = document.querySelector('#stats-table');
-    statsTable.innerHTML = '';
+// const displayResults = function(statsArray) {
+//     const statsTable = document.querySelector('#stats-table');
+//     statsTable.innerHTML = '';
 
-    for (let i = 0; i < statsArray.length; i++) {
-        const currentStats = statsArray[i];
-        const newTableRow = document.createElement("tr");
+//     for (let i = 0; i < statsArray.length; i++) {
+//         const currentStats = statsArray[i];
+//         const newTableRow = document.createElement("tr");
 
-        const winsCell = document.createElement("td");
-        winsCell.textContent = currentStats.stats.wins;
-        newTableRow.append(winsCell);
+//         const winsCell = document.createElement("td");
+//         winsCell.textContent = currentStats.stats.wins;
+//         newTableRow.append(winsCell);
 
-        const lossesCell = document.createElement("td");
-        lossesCell.textContent = currentStats.stats.losses;
-        newTableRow.append(lossesCell);
-    }
-}
+//         const lossesCell = document.createElement("td");
+//         lossesCell.textContent = currentStats.stats.losses;
+//         newTableRow.append(lossesCell);
+//     }
+// }
 
 
 //run the game
 startGameBtn.addEventListener('click', startGame);
 // startGame();
-displayResults();
+// displayResults();
+
+let mode = 'dark';
+const modeButton = document.getElementById('light-dark');
+const body = document.querySelector('body');
+
+modeButton.addEventListener('click', function () {
+    if (mode === 'dark') {
+        mode = 'light';
+        body.setAttribute('class', 'light');
+    } else {
+        mode = 'dark';
+        body.setAttribute('class', 'dark');
+    }
+})
